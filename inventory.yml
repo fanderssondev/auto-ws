@@ -1,0 +1,10 @@
+---
+all:
+  hosts:
+  vars:
+    ansible_user: ansible
+    ansible_python_interpreter: /usr/bin/python3
+  children:
+    debian:
+      hosts:
+        ubuntu24.10:

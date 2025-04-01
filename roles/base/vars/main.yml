@@ -1,0 +1,34 @@
+---
+base_repos:
+  - repo: deb [arch=amd64] https://packages.microsoft.com/repos/code stable main
+    key_url: https://packages.microsoft.com/keys/microsoft.asc
+    key_dest: /etc/apt/keyrings/microsoft.gpg
+    filename: vscode
+  - repo: deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main
+    key_url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+    key_dest: /etc/apt/keyrings/brave-browser.gpg
+    filename: brave-browser
+  - repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+    key_url: https://dl.google.com/linux/linux_signing_key.pub
+    key_dest: /etc/apt/keyrings/google-chrome.gpg
+    filename: google-chrome
+  - repo: deb [arch=amd64] https://deb.nodesource.com/node_20.x nodistro main
+    key_url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    key_dest: /etc/apt/keyrings/nodesource.gpg
+    filename: nodesource
+
+base_packages:
+  - git
+  - fzf
+  - wmctrl
+  - python3
+  - flameshot
+  - htop
+  - tmux
+  - xdotool
+  - code
+  - brave-browser
+  - google-chrome-stable
+  - npm
+  - mc
+  - vim

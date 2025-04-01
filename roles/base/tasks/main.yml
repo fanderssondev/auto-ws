@@ -1,0 +1,4 @@
+---
+- name: Include tasks for Debian distros
+  when: ansible_os_family == 'Debian'
+  ansible.builtin.include_tasks: debian.yml

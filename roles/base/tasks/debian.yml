@@ -1,0 +1,39 @@
+---
+- name: Ensure keyrings directory exists
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: "0755"
+
+- name: Add repository keys
+  ansible.builtin.get_url:
+    url: "{{ item.key_url }}"
+    dest: "{{ item.key_dest }}"
+    mode: "0644"
+  loop: "{{ base_repos }}"
+  when: item.key_url is defined
+
+# BUG repos not added corrrectly
+# - name: Add APT repositories
+#   ansible.builtin.apt_repository:
+#     repo: "{{ item.repo }}"
+#     state: present
+#     filename: "{{ item.filename }}"
+#   loop: "{{ base_repos }}"
+
+- name: Update package cache
+  ansible.builtin.apt:
+    update_cache: true
+
+- name: Upgrade all packages
+  ansible.builtin.apt:
+    upgrade: dist
+
+- name: Install required packages
+  ansible.builtin.apt:
+    name: "{{ base_packages }}"
+    state: present
+
+- name: Remove unused dependencies
+  ansible.builtin.apt:
+    autoremove: true

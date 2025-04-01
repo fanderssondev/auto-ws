@@ -1,0 +1,13 @@
+---
+- name: Configure workstation
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Include base role
+      ansible.builtin.include_role:
+        name: base
+
+    # - name: Include sudoers role
+    #   ansible.builtin.include_role:
+    #     name: sudoers
